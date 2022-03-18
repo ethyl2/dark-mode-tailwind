@@ -5,32 +5,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/dist/output.css" rel="stylesheet">
-  <title>Document</title>
-  <script>
-    localStorage.theme = 'dark'
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  </script>
+  <title>Dark Mode Experiment</title>
 </head>
 <body>
-    <h1 class="bg-black text-red-500">
-      Test
-    </h1>
-    <button type="button" id="mode-toggle">Toggle Dark/Light Mode</button>
-<script>
-  let d = new Date();
-  alert("Today's date is " + d);
-  const toggleButton = document.getElementById('mode-toggle')
-  toggleButton.addEventListener('click', () => {
-    if (localStorage.theme === 'dark') {
-      localStorage.theme = 'light'
-    } else {
-      localStorage.theme = 'dark'
-    }
-  })
-</script>
+  <header class="bg-white border-b text-center text-3xl font-bold text-blue-900 leading-loose tracking-wide dark:bg-black dark:text-yellow-200  dark:border-blue-800 md:text-5xl">
+    <h1 class="py-8 md:py-12">Dark Mode with Tailwindcss</h1>
+  </header>
+  <main class="flex flex-col items-center justify-start bg-white min-h-screen dark:bg-black">
+    <button
+      type="button"
+      id="mode-toggle"
+      class="text-center m-8 rounded-lg px-4 py-2 shadow bg-blue-900 text-white hover:bg-blue-700 dark:bg-yellow-200 dark:text-black dark:hover:bg-yellow-300"
+    >Toggle Dark/Light Mode</button>
+    <!-- Dark mode not enabled unless dark mode is theme in local storage -->
+    <div class="p-6 rounded">
+        <!-- Will be white -->
+        <div class="p-6 rounded border bg-white dark:text-white dark:bg-black">
+         Dark mode in this div only when dark mode is toggled.
+        </div>
+    </div>
+
+    <!-- Dark mode enabled always-->
+    <div class="dark p-6 rounded">
+      <!-- Will be black -->
+      <div class="p-6 rounded border bg-white dark:text-white dark:bg-black">
+        Dark mode in the div no matter what.
+      </div>
+    </div>
+  </main>
+<script src="index.js"></script>
 </body>
 </html>
