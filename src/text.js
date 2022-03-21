@@ -4724,22 +4724,28 @@ const keepUpperCase = [
     'Munchkins'
 ]
 const wordsToKeepTogether = {
-    'Tin' : 'Tin Woodman',
-    'Woodman' : 'Tin Woodman',
-    'Lion' : 'Cowardly Lion',
-    'Cowardly' : 'Cowardly Lion',
-    'Wizard' : 'Wizard of Oz',
-    'Emerald' : 'Emerald City',
-    'Aunt' : 'Aunt Em',
-    'Em' : 'Aunt Em',
-    'Emeralds' : 'City of Emeralds',
-    'North' : 'Witch of the North',
-    'East' : 'Wicked Witch of the East'
+    'Tin' : 'Tin Woodman 🪓',
+    'Woodman' : 'Tin Woodman 🪓',
+    'Lion' : 'Cowardly Lion 🦁',
+    'Cowardly' : 'Cowardly Lion 🦁',
+    'Wizard' : 'Wizard of Oz 🧙‍♂️',
+    'Emerald' : 'Emerald City 💚',
+    'Aunt' : 'Aunt Em 👵',
+    'Em' : 'Aunt Em 👵',
+    'Emeralds' : 'City of Emeralds 💚',
+    'North' : 'Witch of the North 🧙‍♀️',
+    'East' : 'Wicked Witch of the East 💀',
+    'Dorothy' : 'Dorothy 👧',
+    'Toto': 'Toto 🐶',
+    'dog': 'dog 🐶',
+    'Scarecrow' : 'Scarecrow 🎃',
+    'unhappy': 'unhappy 😟'
 }
 
 const wordsToExclude = [
     'xxiii', 
-    'chapter'
+    'chapter',
+    'xxi'
 ]
     
 const notEndingWords = [
