@@ -1,86 +1,32 @@
-const textString = `The Wonderful Wizard of Oz, by L. Frank Baum
+const textString = `The Wonderful Wizard of Oz
 
-Title: The Wonderful Wizard of Oz
-
-Author: L. Frank Baum
-
-
-
-The Wonderful Wizard of Oz
-
-by L. Frank Baum
-
-
-This book is dedicated to my good friend & comrade
-My Wife
-L.F.B.
-
-
-Contents
-
- Introduction
- Chapter I. The Cyclone
- Chapter II. The Council with the Munchkins
- Chapter III. How Dorothy Saved the Scarecrow
- Chapter IV. The Road Through the Forest
- Chapter V. The Rescue of the Tin Woodman
- Chapter VI.  The Cowardly Lion
- Chapter VII. The Journey to the Great Oz
- Chapter VIII. The Deadly Poppy Field
- Chapter IX. The Queen of the Field Mice
- Chapter X. The Guardian of the Gates
- Chapter XI. The Emerald City of Oz
- Chapter XII. The Search for the Wicked Witch
- Chapter XIII. The Rescue
- Chapter XIV. The Winged Monkeys
- Chapter XV. The Discovery of Oz, the Terrible
- Chapter XVI. The Magic Art of the Great Humbug
- Chapter XVII. How the Balloon Was Launched
- Chapter XVIII. Away to the South
- Chapter XIX. Attacked by the Fighting Trees
- Chapter XX. The Dainty China Country
- Chapter XXI. The Lion Becomes the King of Beasts
- Chapter XXII. The Country of the Quadlings
- Chapter XXIII. Glinda The Good Witch Grants Dorothy’s Wish
- Chapter XXIV. Home Again
-
-
-
-
-Introduction
-
-
-Folklore, legends, myths and fairy tales have followed childhood
-through the ages, for every healthy youngster has a wholesome and
-instinctive love for stories fantastic, marvelous and manifestly
-unreal. The winged fairies of Grimm and Andersen have brought more
-happiness to childish hearts than all other human creations.
-
-Yet the old time fairy tale, having served for generations, may now be
-classed as “historical” in the children’s library; for the time has
-come for a series of newer “wonder tales” in which the stereotyped
-genie, dwarf and fairy are eliminated, together with all the horrible
-and blood-curdling incidents devised by their authors to point a
-fearsome moral to each tale. Modern education includes morality;
-therefore the modern child seeks only entertainment in its wonder tales
-and gladly dispenses with all disagreeable incident.
-
-Having this thought in mind, the story of “The Wonderful Wizard of Oz”
-was written solely to please children of today. It aspires to being a
-modernized fairy tale, in which the wonderment and joy are retained and
-the heartaches and nightmares are left out.
-
-L. Frank Baum
-Chicago, April, 1900.
-
-
+The Cyclone
+The Council with the Munchkins
+How Dorothy Saved the Scarecrow
+The Road Through the Forest
+The Rescue of the Tin Woodman
+The Cowardly Lion
+The Journey to the Great Oz
+The Deadly Poppy Field
+The Queen of the Field Mice
+The Guardian of the Gates
+The Emerald City of Oz
+The Search for the Wicked Witch
+The Rescue
+The Winged Monkeys
+The Discovery of Oz, the Terrible
+The Magic Art of the Great Humbug
+How the Balloon Was Launched
+Away to the South
+Attacked by the Fighting Trees
+The Dainty China Country
+The Lion Becomes the King of Beasts
+The Country of the Quadlings
+Glinda The Good Witch Grants Dorothy’s Wish
+Home Again
 
 The Wonderful Wizard of Oz
 
-
-
-
-Chapter I
 The Cyclone
 
 
@@ -4755,12 +4701,140 @@ And oh, Aunt Em! I’m so glad to be at home again!”
 
 const textArray = textString.split(' ')
 let randomString = ''
-const keepUpperCase = ['I', 'Toto', 'Dorothy']
-const length = 50
-for (let i=0; i<length; i++) {
-    const index = Math.floor(Math.random() * textArray.length)
-    randomString += (textArray[index].toLowerCase()) + ' '
+const keepUpperCase = [
+    'I', 
+    'Toto',
+    'Dorothy', 
+    'Oz', 
+    `I'll`, 
+    `I’ll`, 
+    `I’ve`, 
+    `I've'`,
+    'I’m',
+    `I'm`,
+    'i', 
+    'oz', 
+    'Kansas', 
+    `Dorothy's`, 
+    `Dorothy’s`, 
+    'Winkies', 
+    'Kalidahs',
+    'Glinda',
+    'Scarecrow',
+    'Munchkins'
+]
+const wordsToKeepTogether = {
+    'Tin' : 'Tin Woodman',
+    'Woodman' : 'Tin Woodman',
+    'Lion' : 'Cowardly Lion',
+    'Cowardly' : 'Cowardly Lion',
+    'Wizard' : 'Wizard of Oz',
+    'Emerald' : 'Emerald City',
+    'Aunt' : 'Aunt Em',
+    'Em' : 'Aunt Em',
+    'Emeralds' : 'City of Emeralds',
+    'North' : 'Witch of the North',
+    'East' : 'Wicked Witch of the East'
 }
-randomString = randomString.replace(/[\.,\,\/#!$%\^&\*;:{}=\-_~()\"\“”\?]/g,"")
+
+const wordsToExclude = [
+    'xxiii', 
+    'chapter'
+]
+    
+const notEndingWords = [
+    'a',
+    'an',
+    'the',
+    'and',
+    'or'
+]
+
+const endingPunctuationOptions = [ '.', '?', '!', '.', '.']
 const loremIpsum = document.getElementById('lorem-ipsum')
-loremIpsum.textContent = randomString
+loremIpsum.textContent = createParagraph()
+
+const paragraphCountInput = document.getElementById('paragraph-count')
+console.log(paragraphCountInput)
+const ipsumSubmitButton = document.getElementById('ipsum-submit')
+
+ipsumSubmitButton.addEventListener('click', () => {
+    let newText = ''
+    const paragraphCount = paragraphCountInput.value
+    console.log(paragraphCount)
+    for (let i = 0; i < paragraphCount; i++) {
+        newText += createParagraph()
+        if (i !== paragraphCount - 1) {
+            console.log('here')
+            newText += '\n'
+        }
+    }
+    loremIpsum.textContent = newText
+})
+
+function createParagraph() {
+    const sentenceCount = Math.floor(Math.random() * 4) + 1
+    let paragraph = ''
+    for (let i = 0; i < sentenceCount; i++) {
+        paragraph += createSentence()
+        if (i !== sentenceCount - 1) {
+            paragraph += ' '
+        }
+    }
+    return paragraph
+    }
+
+
+function createSentence() {
+    const length = Math.floor(Math.random() * 20) + 1
+    let sentence = ''
+    sentence += getFirstWord() + ' '
+    for (let i=0; i<length; i++) {
+        const index = Math.floor(Math.random() * textArray.length)
+        const newWord1 = checkWord(textArray[index])
+        const newWord2 = checkWord(index !== textArray.length ? textArray[index + 1] : textArray[index - 1])
+        sentence += newWord1 + ' '
+        if (i !== length - 1) {
+            if (newWord2.toLowerCase() !== newWord1.toLowerCase()) {
+                sentence += newWord2
+            }
+            sentence += ' '
+        } else {
+            if (!notEndingWords.includes(newWord2)) {
+                sentence += newWord2
+            }
+        }
+    }
+
+    const endingPunctuation = endingPunctuationOptions[Math.floor(Math.random() * endingPunctuationOptions.length)]
+    sentence += endingPunctuation
+    return sentence
+}
+
+function getFirstWord() {
+    const index = Math.floor(Math.random() * textArray.length)
+    let firstWord = textArray[index]
+    firstWord = firstWord.replace(/(\r\n|\n|\r)/gm," ");
+    if (wordsToExclude.includes(firstWord)) {
+        return 'Dorothy'
+    }
+    if (wordsToKeepTogether[firstWord]) {
+        return wordsToKeepTogether[firstWord]
+    } 
+    return firstWord.charAt(0).toUpperCase() + firstWord.slice(1)
+}
+
+function checkWord(word) {
+    word = word.replace(/[\.,\,\/#!$%\^&\*;:{}=\-_~()\"\“”\?\;\““]/g,"")
+    word = word.replace(/(\r\n|\n|\r)/gm," ")
+    if (wordsToExclude.includes(word)) {
+        return 'Aunt Em'
+    }
+    if (wordsToKeepTogether[word]) {
+        return wordsToKeepTogether[word]
+    } else if (keepUpperCase.includes(word)) {
+        return word.charAt(0).toUpperCase() + word.slice(1)
+    } else {
+        return word.toLowerCase()
+    }
+}

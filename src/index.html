@@ -77,10 +77,25 @@
       </div>
     </div>
 
-    <div class="p-6 rounded">
-      <div id="lorem-ipsum" class="p-6 bg-white border rounded dark:text-white dark:bg-black">
-       
-      </div>
+    <h2 class="container py-8 text-xl font-bold text-center text-black md:text-3xl dark:text-white">Wizard of Oz Lorem Ipsum Generator</h2>
+    <label for="paragraph-count" class="py-2 text-black dark:text-yellow-200">How many paragraphs do you want?</label>
+    <input 
+      type="number" 
+      name="paragraph-count" 
+      id="paragraph-count" 
+      class="p-1 border rounded w-14" 
+      value="1"
+      min="1"
+      />
+    <button
+       type="button"
+       name="ipsum-submit" 
+       id="ipsum-submit"
+       class="px-4 py-2 m-8 font-medium text-center text-white bg-green-800 rounded-lg shadow hover:bg-green-600 dark:bg-green-200 dark:text-black dark:hover:bg-green-300"
+    >Get Lorem Ipsum!</button>
+    <div class="max-w-lg p-6 mx-auto">
+      <p id="lorem-ipsum" class="w-full p-6 leading-loose whitespace-pre-wrap bg-white border rounded dark:text-white dark:bg-black">
+    </div>
   </div>
   </main>
 <script src="index.js"></script>
