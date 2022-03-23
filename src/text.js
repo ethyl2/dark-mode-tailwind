@@ -4783,6 +4783,7 @@ const emojisForWords = {
     'jewels': '💎💎',
     'fire': '🔥',
     'red': '🔴',
+    'scarlet': '🔴',
     'yellow': '🟡',
     'blue': '🔵',
     'brick': '🧱',
@@ -4807,6 +4808,7 @@ const emojisForWords = {
     'eyes': '👀',
     'feet': '👣',
     'night': '🌙',
+    'moon': '🌙',
     'farmer': '👨‍🌾',
     'mice': '🐁🐁🐁',
     'water': '🌊',
@@ -4820,6 +4822,23 @@ const emojisForWords = {
     'cried': '😭',
     'sparkling': '✨',
     'lips': '👄',
+    'sang': '🎵',
+    'bears': '🐻🐻',
+    'door': '🚪',
+    'elephants': '🐘🐘',
+    'elephant': '🐘',
+    'sleep': '💤',
+    'sun': '☀️',
+    'south': '⬇️',
+    'north': '☝🏽',
+    'west': '⬅️',
+    'east': '➡️',
+    'leaves': '🍃🍃',
+    'boots': '👢👢',
+    'witch': '🧙‍♀️',
+    'bird': '🐦',
+    'glasses': '👓',
+
 }
 
 const wordsToExclude = [
@@ -4854,7 +4873,7 @@ ipsumSubmitButton.addEventListener('click', () => {
     for (let i = 0; i < paragraphCount; i++) {
         newText += createParagraph()
         if (i !== paragraphCount - 1) {
-            newText += '\n'
+            newText += '\n\n'
         }
     }
     loremIpsum.textContent = newText
@@ -4874,22 +4893,26 @@ function createParagraph() {
 
 
 function createSentence() {
-    const length = Math.floor(Math.random() * 20) + 1
+    const length = Math.floor(Math.random() * 10) + 1
     let sentence = ''
     sentence += getFirstWord() + ' '
     for (let i=0; i<length; i++) {
         const index = Math.floor(Math.random() * textArray.length)
         const newWord1 = checkWord(textArray[index])
         const newWord2 = checkWord(index !== textArray.length ? textArray[index + 1] : textArray[index - 1])
+        const newWord3 = checkWord(index + 2 !== textArray.length ? textArray[index + 2] : textArray[index - 2])
         sentence += newWord1 + ' '
+        if (newWord2.toLowerCase() !== newWord1.toLowerCase()) {
+            sentence += newWord2 + ' '
+        }
         if (i !== length - 1) {
-            if (newWord2.toLowerCase() !== newWord1.toLowerCase()) {
-                sentence += newWord2
+            if (newWord3.toLowerCase() !== newWord2.toLowerCase()) {
+                sentence += newWord3
             }
             sentence += ' '
         } else {
-            if (!notEndingWords.includes(newWord2)) {
-                sentence += newWord2
+            if (!notEndingWords.includes(newWord3) && newWord3.toLowerCase() !== newWord2.toLowerCase()) {
+                sentence += newWord3
             }
         }
     }
