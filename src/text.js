@@ -4721,25 +4721,56 @@ const keepUpperCase = [
     'Kalidahs',
     'Glinda',
     'Scarecrow',
-    'Munchkins'
+    'Munchkins',
+    'Toto’s',
+    'Woodman’s'
 ]
 const wordsToKeepTogether = {
-    'Tin' : 'Tin Woodman 🪓',
-    'Woodman' : 'Tin Woodman 🪓',
-    'Lion' : 'Cowardly Lion 🦁',
-    'Cowardly' : 'Cowardly Lion 🦁',
-    'Wizard' : 'Wizard of Oz 🧙‍♂️',
-    'Emerald' : 'Emerald City 💚',
-    'Aunt' : 'Aunt Em 👵',
-    'Em' : 'Aunt Em 👵',
-    'Emeralds' : 'City of Emeralds 💚',
-    'North' : 'Witch of the North 🧙‍♀️',
-    'East' : 'Wicked Witch of the East 💀',
-    'Dorothy' : 'Dorothy 👧',
-    'Toto': 'Toto 🐶',
-    'dog': 'dog 🐶',
-    'Scarecrow' : 'Scarecrow 🎃',
-    'unhappy': 'unhappy 😟'
+    'Tin' : 'Tin Woodman',
+    'Woodman' : 'Tin Woodman',
+    'Lion' : 'Cowardly Lion',
+    'Cowardly' : 'Cowardly Lion',
+    'Wizard' : 'Wizard of Oz',
+    'Emerald' : 'Emerald City',
+    'Aunt' : 'Aunt Em',
+    'Em' : 'Aunt Em',
+    'Emeralds' : 'City of Emeralds',
+    'North' : 'Witch of the North',
+    'East' : 'Wicked Witch of the East',
+}
+
+const emojisForWords = {
+    'Tin Woodman' : '🪓',
+    'Woodman’s': '🪓',
+    'Cowardly Lion' : '🦁',
+    'lion': '🦁',
+    'Wizard of Oz' :  '🧙‍♂️',
+    'Emerald City' : '💚',
+    'Aunt Em' : '👵',
+    'City of Emeralds' : '💚',
+    'Witch of the North' : '🧙‍♀️',
+    'Wicked Witch of the East' : '💀',
+    'Dorothy' : '👧',
+    'Toto': '🐶',
+    'Toto’s' : '🐶',
+    'dog': '🐶',
+    'Scarecrow' : '🎃',
+    'unhappy': '😟',
+    'green': '🟢', 
+    'king': '🤴',
+    'queen': '👸', 
+    'trees': '🌳🌴🌲',
+    'forest': '🌳🌲',
+    'tree': '🌲',
+    'scarecrow': '🎃',
+    'mouse': '🐁',
+    'cow': '🐄',
+    'smile': '😊',
+    'castle': '🏰',
+    'monkeys': '🐵🙈🙉🙊',
+    'monkey': '🐵',
+    'brain': '🧠',
+    'heart': '💓',
 }
 
 const wordsToExclude = [
@@ -4758,20 +4789,21 @@ const notEndingWords = [
 
 const endingPunctuationOptions = [ '.', '?', '!', '.', '.']
 const loremIpsum = document.getElementById('lorem-ipsum')
-loremIpsum.textContent = createParagraph()
+window.addEventListener('load', () => {
+    loremIpsum.textContent = createParagraph()
+})
+
 
 const paragraphCountInput = document.getElementById('paragraph-count')
-console.log(paragraphCountInput)
+const emojiToggle = document.getElementById('emoji-toggle')
 const ipsumSubmitButton = document.getElementById('ipsum-submit')
 
 ipsumSubmitButton.addEventListener('click', () => {
     let newText = ''
     const paragraphCount = paragraphCountInput.value
-    console.log(paragraphCount)
     for (let i = 0; i < paragraphCount; i++) {
         newText += createParagraph()
         if (i !== paragraphCount - 1) {
-            console.log('here')
             newText += '\n'
         }
     }
@@ -4819,28 +4851,50 @@ function createSentence() {
 
 function getFirstWord() {
     const index = Math.floor(Math.random() * textArray.length)
-    let firstWord = textArray[index]
-    firstWord = firstWord.replace(/(\r\n|\n|\r)/gm," ");
+    let firstWord = textArray[index].trim()
+    firstWord = firstWord.replace(/(\r\n|\n|\r)/gm," ")
+    if (/\s/.test(firstWord)) {
+        firstWord = firstWord.split(' ')[0]
+    }
     if (wordsToExclude.includes(firstWord)) {
-        return 'Dorothy'
+        firstWord = 'Dorothy'
     }
     if (wordsToKeepTogether[firstWord]) {
-        return wordsToKeepTogether[firstWord]
+        firstWord = wordsToKeepTogether[firstWord]
     } 
+    if (emojiToggle.checked && emojisForWords[firstWord]) {
+        firstWord += ' ' + emojisForWords[firstWord]
+    }
     return firstWord.charAt(0).toUpperCase() + firstWord.slice(1)
 }
 
 function checkWord(word) {
     word = word.replace(/[\.,\,\/#!$%\^&\*;:{}=\-_~()\"\“”\?\;\““]/g,"")
-    word = word.replace(/(\r\n|\n|\r)/gm," ")
+    word = word.replace(/(\r\n|\n|\r)/gm," ").trim()
+    if (/\s/.test(word)) {
+        word = word.split(' ')[0]
+    }
+    console.log(word)
     if (wordsToExclude.includes(word)) {
-        return 'Aunt Em'
+        return 'Aunt Em' + ' ' + emojisForWords['Aunt Em']
     }
     if (wordsToKeepTogether[word]) {
-        return wordsToKeepTogether[word]
+        word = wordsToKeepTogether[word]
+        if (emojiToggle.checked && emojisForWords[word]) {
+            word += ' ' + emojisForWords[word]
+        }
+        return word
     } else if (keepUpperCase.includes(word)) {
-        return word.charAt(0).toUpperCase() + word.slice(1)
+        word = word.charAt(0).toUpperCase() + word.slice(1)
+        if (emojiToggle.checked && emojisForWords[word]) {
+            word += ' ' + emojisForWords[word]
+        }
+        return word
     } else {
+        if (emojiToggle.checked && emojisForWords[word]) {
+            console.log('found one: ', word)
+            word += ' ' + emojisForWords[word]
+        }
         return word.toLowerCase()
     }
 }
