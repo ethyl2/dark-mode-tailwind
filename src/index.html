@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/dist/output.css" rel="stylesheet">
+  <link href="../dist/output.css" rel="stylesheet">
   <title>Dark Mode Experiment</title>
   <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
   <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
@@ -70,14 +70,14 @@
       class="px-4 py-2 m-8 font-medium text-center text-white bg-blue-900 rounded-lg shadow hover:bg-blue-700 dark:bg-yellow-200 dark:text-black dark:hover:bg-yellow-300"
     >Toggle Light/Dark Mode</button>
     <div class="relative">
-      <button 
+      <button
         type="button"
-        class="light-mode-button" 
-        aria-label="Toggle Light Mode" 
+        class="light-mode-button"
+        aria-label="Toggle Light Mode"
         id="toggle-element">
         <span id="toggle-container" class="bg-blue-100 dark:bg-white"></span>
         <span id="toggle-ball" class="bg-blue-700 dark:bg-blue-500 hover:bg-blue-500 dark:hover:bg-blue-400"></span>
-      </button> 
+      </button>
     </div>
     <!-- Dark mode not enabled unless dark mode is theme in local storage -->
     <div class="p-6 rounded">
@@ -99,22 +99,22 @@
     <p class="container text-base text-center md:text-lg dark:text-blue-200">Use auto-generated text that will take your readers on a trip over the rainbow!</p>
     <img src="../images/rainbow.png" class="w-32 mt-3" alt="rainbow" />
     <label for="paragraph-count" class="py-2 text-black dark:text-yellow-200">How many paragraphs do you want?</label>
-    <input 
-      type="number" 
-      name="paragraph-count" 
-      id="paragraph-count" 
-      class="p-1 border rounded w-14" 
+    <input
+      type="number"
+      name="paragraph-count"
+      id="paragraph-count"
+      class="p-1 border rounded w-14"
       value="1"
       min="1"
       />
     <div class="flex items-center justify-start pt-2 space-x-2">
       <label for="emojis-toggle"  class="text-black dark:text-yellow-200">Include Emojis?</label>
-      <input type="checkbox" id="emoji-toggle" checked class="w-10" value="true" /> 
+      <input type="checkbox" id="emoji-toggle" checked class="w-10" value="true" />
     </div>
-    
+
     <button
        type="button"
-       name="ipsum-submit" 
+       name="ipsum-submit"
        id="ipsum-submit"
        class="px-4 py-2 m-8 font-medium text-center text-white bg-green-800 rounded-lg shadow hover:bg-green-600 dark:bg-green-200 dark:text-black dark:hover:bg-green-300"
     >Get Lorem Ipsum!</button>
