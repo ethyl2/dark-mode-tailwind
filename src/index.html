@@ -6,33 +6,124 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="/dist/output.css" rel="stylesheet">
   <title>Dark Mode Experiment</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <style>
+    /* Light Mode Button Styles
+    --------------------------- */
+    .light-mode-button {
+      box-sizing: border-box;
+      cursor: pointer;
+      height: 40px;
+      width: 100px;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0);
+    }
+    .light-mode-button:focus {
+      outline: none; /* Not ideal for accessibility */
+    }
+    #toggle-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 40px;
+      border-radius: 20px;
+      box-shadow: inset 1px 1px 3px 0 rgb(0 0 0 / 40%);
+      transition: 0.3s;
+    }
+    #toggle-ball {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      box-shadow: 1px 1px 2px 0 rgb(0 0 0 / 40%);
+      transition: 0.3s;
+    }
+  </style>
 </head>
 <body>
-  <header class="bg-white border-b text-center text-3xl font-bold text-blue-900 leading-loose tracking-wide dark:bg-black dark:text-yellow-200  dark:border-blue-800 md:text-5xl">
+  <header class="text-3xl font-bold leading-loose tracking-wide text-center text-blue-900 bg-white border-b dark:bg-black dark:text-yellow-200 dark:border-blue-800 md:text-5xl">
     <h1 class="py-8 md:py-12">Dark Mode with Tailwindcss</h1>
   </header>
-  <main class="flex flex-col items-center justify-start bg-white min-h-screen dark:bg-black">
+  <main class="flex flex-col items-center justify-start min-h-screen bg-white dark:bg-black">
     <button
       type="button"
       id="mode-toggle"
-      class="text-center m-8 rounded-lg px-4 py-2 shadow bg-blue-900 text-white hover:bg-blue-700 dark:bg-yellow-200 dark:text-black dark:hover:bg-yellow-300"
-    >Toggle Dark/Light Mode</button>
+      class="px-4 py-2 m-8 font-medium text-center text-white bg-blue-900 rounded-lg shadow hover:bg-blue-700 dark:bg-yellow-200 dark:text-black dark:hover:bg-yellow-300"
+    >Toggle Light/Dark Mode</button>
+    <div class="relative">
+      <button 
+        type="button"
+        class="light-mode-button" 
+        aria-label="Toggle Light Mode" 
+        id="toggle-element">
+        <span id="toggle-container" class="bg-blue-100 dark:bg-white"></span>
+        <span id="toggle-ball" class="bg-blue-700 dark:bg-blue-500 hover:bg-blue-500 dark:hover:bg-blue-400"></span>
+      </button> 
+    </div>
     <!-- Dark mode not enabled unless dark mode is theme in local storage -->
     <div class="p-6 rounded">
-        <!-- Will be white -->
-        <div class="p-6 rounded border bg-white dark:text-white dark:bg-black">
+        <div class="p-6 bg-white border rounded dark:text-white dark:bg-black">
          Dark mode in this div only when dark mode is toggled.
         </div>
     </div>
 
     <!-- Dark mode enabled always-->
-    <div class="dark p-6 rounded">
+    <div class="p-6 rounded dark">
       <!-- Will be black -->
-      <div class="p-6 rounded border bg-white dark:text-white dark:bg-black">
+      <div class="p-6 bg-white border rounded dark:text-white dark:bg-black">
         Dark mode in the div no matter what.
       </div>
     </div>
+
+    <h2 class="container py-8 text-xl font-bold text-center text-black md:text-3xl dark:text-white">Wizard of Oz Lorem Ipsum Generator</h2>
+    <p class="container text-base text-center md:text-lg dark:text-blue-300">Ready for something a little more exciting than normal lorem ipsum?</p>
+    <p class="container text-base text-center md:text-lg dark:text-blue-200">Use auto-generated text that will take your readers on a trip over the rainbow!</p>
+    <img src="../images/rainbow.png" class="w-32 mt-3" alt="rainbow" />
+    <label for="paragraph-count" class="py-2 text-black dark:text-yellow-200">How many paragraphs do you want?</label>
+    <input 
+      type="number" 
+      name="paragraph-count" 
+      id="paragraph-count" 
+      class="p-1 border rounded w-14" 
+      value="1"
+      min="1"
+      />
+    <div class="flex items-center justify-start pt-2 space-x-2">
+      <label for="emojis-toggle"  class="text-black dark:text-yellow-200">Include Emojis?</label>
+      <input type="checkbox" id="emoji-toggle" checked class="w-10" value="true" /> 
+    </div>
+    
+    <button
+       type="button"
+       name="ipsum-submit" 
+       id="ipsum-submit"
+       class="px-4 py-2 m-8 font-medium text-center text-white bg-green-800 rounded-lg shadow hover:bg-green-600 dark:bg-green-200 dark:text-black dark:hover:bg-green-300"
+    >Get Lorem Ipsum!</button>
+    <div class="max-w-lg p-6 mx-auto">
+      <p id="lorem-ipsum" class="w-full p-6 leading-loose whitespace-pre-wrap bg-white border rounded dark:text-white dark:bg-black">
+    </div>
+  </div>
   </main>
 <script src="index.js"></script>
+<script src="text.js"></script>
 </body>
 </html>
