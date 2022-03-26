@@ -4702,22 +4702,22 @@ And oh, Aunt Em! I’m so glad to be at home again!”
 const textArray = textString.split(' ')
 let randomString = ''
 const keepUpperCase = [
-    'I', 
+    'I',
     'Toto',
-    'Dorothy', 
-    'Oz', 
-    `I'll`, 
-    `I’ll`, 
-    `I’ve`, 
+    'Dorothy',
+    'Oz',
+    `I'll`,
+    `I’ll`,
+    `I’ve`,
     `I've'`,
     'I’m',
     `I'm`,
-    'i', 
-    'oz', 
-    'Kansas', 
-    `Dorothy's`, 
-    `Dorothy’s`, 
-    'Winkies', 
+    'i',
+    'oz',
+    'Kansas',
+    `Dorothy's`,
+    `Dorothy’s`,
+    'Winkies',
     'Kalidahs',
     'Glinda',
     'Scarecrow',
@@ -4744,54 +4744,55 @@ const emojisForWords = {
     'Woodman’s': '🪓',
     'chop': '🪓',
     'woodchopper': '🪓',
+    'axe': '🪓',
     'Cowardly Lion' : '🦁',
-    'lion': '🦁',
-    'lion’s': '🦁',
     'Wizard of Oz' :  '🧙‍♂️',
     'Emerald City' : '💚',
     'Aunt Em' : '👵',
     'City of Emeralds' : '💚',
     'Witch of the North' : '🧙‍♀️',
     'Wicked Witch of the East' : '💀',
+    'witches': '🧙‍♀️🧙‍♀️',
+    'wizards': '🧙‍♂️🧙‍♂️',
     'Dorothy' : '👧',
     'Dorothy’s': '👧',
     'Toto': '🐶',
     'Toto’s' : '🐶',
-    'dog': '🐶',
     'Glinda': '✨👸✨',
     'Scarecrow' : '🎃',
-    'unhappy': '😟',
-    'green': '🟢', 
+    'scarecrow’s' : '🎃',
     'king': '🤴',
-    'queen': '👸', 
+    'queen': '👸',
     'trees': '🌳🌴🌲',
     'forest': '🌳🌲',
     'woods': '🌳🌲',
     'tree': '🌲',
     'scarecrow': '🎃',
-    'mouse': '🐁',
-    'cow': '🐄',
-    'cow’s': '🐄',
-    'smile': '😊',
     'castle': '🏰',
     'palace': '🏰',
-    'monkeys': '🐵🙈🙉🙊',
-    'monkey': '🐵',
     'brain': '🧠',
     'brains': '🧠',
     'heart': '💓',
     'jewels': '💎💎',
     'fire': '🔥',
+    'burn': '🔥',
+    'green': '🟢',
     'red': '🔴',
     'scarlet': '🔴',
     'yellow': '🟡',
     'blue': '🔵',
+    'purple': '🟣',
     'brick': '🧱',
     'flowers': '💐',
     'flower': '🌼',
     'glad': '🙂',
     'happy': '😀',
-    'spider': '🕷️',
+    'wept': '😭',
+    'cry': '😭',
+    'cried': '😭',
+    'angry': '😠',
+    'smile': '😊',
+    'unhappy': '😟',
     'basket': '🧺',
     'cyclone': '🌪️',
     'deadly': '☠️',
@@ -4799,11 +4800,14 @@ const emojisForWords = {
     'bear': '🐻',
     'ears': '👂👂',
     'ear': '👂',
+    'hands': '👐',
     'shoe': '👠',
     'shoes': '👠👠',
     'cloud': '☁️',
     'clouds': '☁️☁️',
     'house': '🏚️',
+    'houses': '🏘️',
+    'home': '🏡',
     'road': '🛣️',
     'eyes': '👀',
     'feet': '👣',
@@ -4814,19 +4818,32 @@ const emojisForWords = {
     'water': '🌊',
     'arm': '💪',
     'arms': '💪💪',
+    'lion': '🦁',
+    'lion’s': '🦁',
+    'monkeys': '🐵🙈🙉🙊',
+    'monkey': '🐵',
+    'dog': '🐶',
+    'dogs': '🐕 🐩 🐕‍🦺 🦮',
+    'mouse': '🐁',
+    'cow': '🐄',
+    'cow’s': '🐄',
     'tiger': '🐅',
     'tigers': '🐅🐅',
     'wolf': '🐺',
     'wolves': '🐺🐺',
     'wildcat': '🐆',
-    'cried': '😭',
-    'sparkling': '✨',
-    'lips': '👄',
-    'sang': '🎵',
-    'bears': '🐻🐻',
-    'door': '🚪',
+    'bird': '🐦',
+    'birds': '🦤 🦆 🦃 🦚 🐦 🕊️ 🐤 🐔 🦜 🐧 🦅 🦉 🦢',
+    'horse': '🐎',
+    'spider': '🕷️',
     'elephants': '🐘🐘',
     'elephant': '🐘',
+    'bears': '🐻🐻',
+    'sparkling': '✨',
+    'glittering': '✨✨✨',
+    'lips': '👄',
+    'sang': '🎵',
+    'door': '🚪',
     'sleep': '💤',
     'sun': '☀️',
     'south': '⬇️',
@@ -4836,18 +4853,33 @@ const emojisForWords = {
     'leaves': '🍃🍃',
     'boots': '👢👢',
     'witch': '🧙‍♀️',
-    'bird': '🐦',
     'glasses': '👓',
+    'cornfield': '🌽',
+    'monster': '👹',
+    'rich': '💰',
+    'rope': '🪢',
+    'ropes': '🪢🪢',
+    'magic': '✨',
+    'nest': '🪹',
+    'egg': '🥚',
+    'hat': '🎩',
+    'kiss': '💋',
+    'supper': '🍲🥕🍞🍗',
+    'clown': '🤡',
+    'clowns': '🤡🤡',
+    'cakes': '🎂 🧁 🥮',
+    'rain': '🌧️'
 
 }
 
 const wordsToExclude = [
-    'xxiii', 
+    'xxiii',
     'chapter',
     'xxi',
+    'xii',
     'iv',
 ]
-    
+
 const notEndingWords = [
     'a',
     'an',
@@ -4934,7 +4966,7 @@ function getFirstWord() {
     }
     if (wordsToKeepTogether[firstWord]) {
         firstWord = wordsToKeepTogether[firstWord]
-    } 
+    }
     if (emojiToggle.checked && emojisForWords[firstWord]) {
         firstWord += ' ' + emojisForWords[firstWord]
     }
@@ -4953,20 +4985,23 @@ function checkWord(word) {
     if (wordsToKeepTogether[word]) {
         word = wordsToKeepTogether[word]
         if (emojiToggle.checked && emojisForWords[word]) {
-            word += ' ' + emojisForWords[word]
+            word += ' ' + emojisForWords[word] + ' '
         }
         return word
     } else if (keepUpperCase.includes(word)) {
         word = word.charAt(0).toUpperCase() + word.slice(1)
         if (emojiToggle.checked && emojisForWords[word]) {
-            word += ' ' + emojisForWords[word]
+            word += ' ' + emojisForWords[word] + ' '
         }
         return word
     } else {
+        word = word.toLowerCase()
         if (emojiToggle.checked && emojisForWords[word]) {
             console.log('found one: ', word)
-            word += ' ' + emojisForWords[word]
+            word += ' ' + emojisForWords[word] + ' '
+        } else {
+          console.log('no emoji found: ', word)
         }
-        return word.toLowerCase()
+        return word
     }
 }
