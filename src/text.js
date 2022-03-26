@@ -4997,10 +4997,7 @@ function checkWord(word) {
     } else {
         word = word.toLowerCase()
         if (emojiToggle.checked && emojisForWords[word]) {
-            console.log('found one: ', word)
             word += ' ' + emojisForWords[word] + ' '
-        } else {
-          console.log('no emoji found: ', word)
         }
         return word
     }
